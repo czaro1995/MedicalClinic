@@ -44,6 +44,14 @@ public class Pacjent {
 		this.haslo = haslo;
 	}
 	
+	public void zarezerwujWizyte(Wizyta wizyta) {
+		this.getKartaPacjenta().dodajWizyte(wizyta);
+	}
+	
+	public void anulujWizyte(Wizyta wizyta) {
+		this.getKartaPacjenta().anulujWizyte(wizyta);
+	}
+	
 	
 	
 	
