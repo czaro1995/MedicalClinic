@@ -5,14 +5,25 @@ public class Pacjent {
 	private KartaPacjenta kartaPacjenta;
 	private String login;
 	private String haslo;
+	private String numerTelefonu;
 	
-	public Pacjent(String imie, String nazwisko) {
+	public Pacjent(String imie, String nazwisko, String numerTelefonu) {
 		this.imie = imie;
 		this.nazwisko = nazwisko;
 		this.kartaPacjenta = new KartaPacjenta();
 		this.login = imie.toLowerCase() + "." + nazwisko.toLowerCase();
 		this.haslo = "Hasl0123";
+		this.numerTelefonu = numerTelefonu;
 	}
+	
+	public String getNumerTelefonu() {
+		return numerTelefonu;
+	}
+
+	public void setNumerTelefonu(String numerTelefonu) {
+		this.numerTelefonu = numerTelefonu;
+	}
+
 	public String getImie() {
 		return imie;
 	}
@@ -50,6 +61,14 @@ public class Pacjent {
 	
 	public void anulujWizyte(Wizyta wizyta) {
 		this.getKartaPacjenta().anulujWizyte(wizyta);
+	}
+	
+	public Wizyta pokazWszystkieUmowioneWizyty() {
+		Wizyta w1 = null;
+		for(Wizyta w : this.getKartaPacjenta().getWizyty()) {
+			w1 = w;
+		}
+		return w1;
 	}
 	
 	
