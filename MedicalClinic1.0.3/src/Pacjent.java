@@ -9,7 +9,7 @@ public class Pacjent {
 	private String numerTelefonu;
 	private Pattern patternImie = Pattern.compile("[A-Z][a-z]{2,9}+");
 	private Pattern patternNazwisko = Pattern.compile("[A-Z][a-z]{2,14}+");
-	private Pattern patternHaslo = Pattern.compile("[[A-Z]{1}[a-z]{1}[0-9]{1}]{8,}");
+	private Pattern patternHaslo = Pattern.compile("[[A-Z]{1,}[a-z]{1,}[0-9]{1,}]{8,}");
 	private Pattern patternNumerTelefonu = Pattern.compile("[0-9]{9,9}");
 	
 	public Pacjent() {
