@@ -1,11 +1,11 @@
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 class PacjentTest {
-
-	
 	Pacjent pacjent = new Pacjent();
 	
 	@Test
@@ -38,6 +38,28 @@ class PacjentTest {
 		Assert.assertFalse(pacjent.setHaslo("st"));
 		Assert.assertFalse(pacjent.setHaslo("staszewski1"));
 		Assert.assertFalse(pacjent.setHaslo("STASZEWSKI"));
+	}
+	
+	@Test
+	public void testGetWizyta() {
+		Wizyta w2 = null;
+		Wizyta w3 = null;
+		Wizyta wizyta = new Wizyta();
+		Wizyta wizyta2 = new Wizyta();
+		Wizyta wizyta3 = new Wizyta();
+		pacjent.zarezerwujWizyte(wizyta);
+		pacjent.zarezerwujWizyte(wizyta2);
+		for(Wizyta w : pacjent.getKartaPacjenta().getWizyty()) {
+			if(w == wizyta) {
+				w2 = w;
+			}
+			if(w == wizyta2) {
+				w3 = w;
+			}
+		}
+		Assert.assertTrue(w2 == wizyta);
+		Assert.assertTrue(w3 == wizyta2);
+		Assert.assertFalse(w2 == wizyta3);
 	}
 
 }
