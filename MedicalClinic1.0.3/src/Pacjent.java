@@ -9,7 +9,7 @@ public class Pacjent {
 	private String numerTelefonu;
 	private Pattern patternImie = Pattern.compile("[A-Z][a-z]{2,9}+");
 	private Pattern patternNazwisko = Pattern.compile("[A-Z][a-z]{2,14}+");
-	private Pattern patternHaslo = Pattern.compile("[[A-Z]{1,}[a-z]{1,}[0-9]{1,}]{8,}");
+	private Pattern patternHaslo = Pattern.compile("(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,})$");
 	private Pattern patternNumerTelefonu = Pattern.compile("[0-9]{9,9}");
 	
 	public Pacjent() {
@@ -25,9 +25,6 @@ public class Pacjent {
 		if(patternNumerTelefonu.matcher(numerTelefonu).matches()) {
 			this.numerTelefonu = numerTelefonu;
 			check = true;
-		} 
-		if(!check) {
-			System.out.println("Nieprawidłowa liczba znaków lub znak niedozwolony.");
 		}
 		return check;
 	}
@@ -41,9 +38,6 @@ public class Pacjent {
 			this.imie = imie;
 			check = true;
 		}
-		if(!check) {
-			System.out.println("Imie nie spełnia wymagań min 3 znaki, max 10 znakow - mozesz uzyc tylko liter");
-		}
 		return check;
 	}
 	public String getNazwisko() {
@@ -54,9 +48,6 @@ public class Pacjent {
 		if(patternNazwisko.matcher(nazwisko).matches()) {
 			this.nazwisko = nazwisko;
 			check = true;
-		}
-		if(!check) {
-			System.out.println("Nazwisko nie spełnia wymagań min 3 znaki, max 15 znakow - mozesz uzyc tylko liter");
 		}
 		return check;
 	}
@@ -85,9 +76,6 @@ public class Pacjent {
 		if(patternHaslo.matcher(haslo).matches()) {
 			this.haslo = haslo;
 			check = true;
-		}
-		if(!check) {
-			System.out.println("Haslo nie spelnia wymagan - min 8 znakow, min 1 wielka litera, min 1 cyfra");
 		}
 		return check;
 	}

@@ -1,42 +1,43 @@
+import static org.junit.jupiter.api.Assertions.*;
 
-public class PacjentTest {
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
 
-	public static void main(String[] args) {
-		Pacjent pacjent = new Pacjent();
-		
-		//test wprowadzenia imienia dla obiektu pacjent
-		System.out.println("test ustawienia imienia prawidlowego - Adrian");
-		System.out.println(pacjent.setImie("Adrian"));
-		System.out.println("test ustawienia imienia z cyfra - Ad3rian");
-		System.out.println(pacjent.setImie("Ad3rian"));
-		System.out.println("test ustawienia imienia zbyt dlugiego - Adriaaaaaaaaaan");
-		System.out.println(pacjent.setImie("Adriaaaaaaaaaan"));
-		System.out.println("test ustawienia imienia zbyt krotkiego - Ad");
-		System.out.println(pacjent.setImie("Ad"));
-		
-		//test wprowadzania nazwiska dla obiektu pacjent
-		System.out.println("test ustawienia nazwiska prawidlowego - Staszewski");
-		System.out.println(pacjent.setNazwisko("Staszewski"));
-		System.out.println("test ustawienia nazwiska z cyfra - St4szewski");
-		System.out.println(pacjent.setNazwisko("St4szewski"));
-		System.out.println("test ustawienia nazwiska zbyt dlugiego - Staszeeeeeeeeeeeeeeeeewski");
-		System.out.println(pacjent.setNazwisko("Staszeeeeeeeeeeeeeeeeewski"));
-		System.out.println("test ustawienia nazwiska zbyt krotkiego - St");
-		System.out.println(pacjent.setNazwisko("St"));
-		System.out.println("test ustawienia nazwiska ze znakiem niedozwolonym - Staszewski!");
-		System.out.println(pacjent.setNazwisko("Staszewski!"));
-		
-		//test wprowadzania hasla dla obiektu pacjent
-		System.out.println("test ustawienia hasla prawidlowego - Staszewski1");
-		System.out.println(pacjent.setHaslo("Staszewski1"));
-		System.out.println("test ustawienia hasla bez cyfry - Staszewski");
-		System.out.println(pacjent.setHaslo("Staszewski"));
-		System.out.println("test ustawienia hasla bez wielkiej litery - staszewski");
-		System.out.println(pacjent.setHaslo("staszewski"));
-		System.out.println("test ustawienia hasla bez malej litery - STASZEWSKI");
-		System.out.println(pacjent.setHaslo("STASZEWSKI"));
-		System.out.println("test ustawienia hasla zbyt krotkiego - Adrian1");
-		System.out.println(pacjent.setHaslo("Adrian1"));
+class PacjentTest {
+
+	
+	Pacjent pacjent = new Pacjent();
+	
+	@Test
+	public void testSetNumerTelefonu() {
+		Assert.assertTrue(pacjent.setNumerTelefonu("500500500"));
+		Assert.assertFalse(pacjent.setNumerTelefonu("5a5500500"));
+		Assert.assertFalse(pacjent.setNumerTelefonu("50050050"));
+		Assert.assertFalse(pacjent.setNumerTelefonu("5005005005"));
+	}
+
+	@Test
+	public void testSetImie() {
+		Assert.assertFalse(pacjent.setImie("adrian"));
+		Assert.assertFalse(pacjent.setImie("Adri4n"));
+		Assert.assertFalse(pacjent.setImie("Ad"));
+		Assert.assertFalse(pacjent.setImie("Adriaaaaaaaaaaaaaaaaaaaaaan"));
+		Assert.assertTrue(pacjent.setImie("Adrian"));
+	}
+	@Test
+	public void testSetNazwisko() {
+		Assert.assertTrue(pacjent.setNazwisko("Staszewski"));
+		Assert.assertFalse(pacjent.setNazwisko("st"));
+		Assert.assertFalse(pacjent.setNazwisko("Staszewskiiiiiiiiiiiiiiiiiii"));
+		Assert.assertFalse(pacjent.setNazwisko("St4szewski"));
+		Assert.assertFalse(pacjent.setNazwisko("staszewski"));
+	}
+	@Test
+	public void testSetHaslo() {
+		Assert.assertTrue(pacjent.setHaslo("Staszewski1"));
+		Assert.assertFalse(pacjent.setHaslo("st"));
+		Assert.assertFalse(pacjent.setHaslo("staszewski1"));
+		Assert.assertFalse(pacjent.setHaslo("STASZEWSKI"));
 	}
 
 }
