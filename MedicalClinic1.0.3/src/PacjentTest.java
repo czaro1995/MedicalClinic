@@ -34,10 +34,14 @@ class PacjentTest {
 	}
 	@Test
 	public void testSetHaslo() {
-		Assert.assertTrue(pacjent.setHaslo("Staszewski1"));
-		Assert.assertFalse(pacjent.setHaslo("st"));
-		Assert.assertFalse(pacjent.setHaslo("staszewski1"));
-		Assert.assertFalse(pacjent.setHaslo("STASZEWSKI"));
+		 Assert.assertFalse(pacjent.setHaslo("Staszewski1!  "));
+                Assert.assertFalse(pacjent.setHaslo("Staszewski"));
+                Assert.assertFalse(pacjent.setHaslo("Staszewski1"));
+                Assert.assertFalse(pacjent.setHaslo("staszewski1@"));
+                Assert.assertFalse(pacjent.setHaslo("STASZEWSKI1%"));
+                Assert.assertFalse(pacjent.setHaslo("STA!"));
+                Assert.assertTrue(pacjent.setHaslo("sTASZEWSKI1$"));
+                Assert.assertTrue(pacjent.setHaslo("Staszewski1*"));
 	}
 	
 	@Test
